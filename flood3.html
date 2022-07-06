@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>floyd cycle detection program in javascript</h2>
+</body>
+<script>
+		
+		class Node
+		{
+			constructor(x)
+			{
+				this.data = x;
+				this.link = null;
+			}
+		}
+
+		
+		let head = null;
+
+		
+		function Loop(head) {
+			let sPoint = head;
+			let fPoint = head;
+
+			while (sPoint != null
+				&& fPoint != null
+				&& fPoint.link != null) {
+				sPoint = sPoint.link;
+				fPoint = fPoint.link.link;
+				if (sPoint == fPoint)
+					return 1;
+			}
+
+			return 0;
+		}
+
+		
+		head = new Node(1);
+		head.link = new Node(3);
+		head.link.link = new Node(4);
+		head.link.link.link = new Node(5);
+		head.link.link.link.link = new Node(6);
+
+		
+		let temp = head;
+		while (temp.link != null)
+			temp = temp.link;
+
+		temp.link = head;
+
+		
+		if (Loop(head))
+			document.write("Loop exists " + "<br>");
+		else
+			document.write("Loop does not exists " + "<br>");
+
+	
+	</script>
+        </html>
+
